@@ -15,15 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
-      - name: 'Cleanup build folder'
-        run: |
-          ls -la ./
-          rm -rf ./* || true
-          rm -rf ./.??* || true
-          ls -la ./
       - uses: actions/checkout@v2
         with:
           submodules: true
+      - name: 'Cleanup build folder'
+        run: |
+          du ./
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
